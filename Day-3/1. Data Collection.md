@@ -1,0 +1,40 @@
+## **Item Testing**
+   **Link:** https://www.zabbix.com/documentation/6.2/en/manual/config/items/item?hl=Testing%2Creal%2Cvalue<br>
+   
+   É possível testar um item e, se configurado corretamente, obter um valor real em troca. O teste pode ocorrer mesmo antes de um item ser salvo. O teste está disponível para itens de host e modelo, protótipos de itens e regras de descoberta de baixo nível. O teste não está disponível para itens ativos.<br>
+   O teste de itens está disponível para os seguintes tipos de itens passivos:<br>
+
+ - Zabbix agent
+ - SNMP agent (v1, v2, v3)
+ - IPMI agent
+ - SSH checks
+ - Telnet checks
+ - JMX agent
+ - Simple checks (except icmpping*, vmware.* items)
+ - Zabbix internal
+ - Calculated items
+ - External checks
+ - Database monitor
+ - HTTP agent
+ - Script
+
+   Para testar um item, clique no botão Testar na parte inferior do formulário de configuração do item. Observe que o botão Testar será desabilitado para itens que não podem ser testados (como verificações ativas, verificações simples excluídas).<br>
+
+   O formulário de teste de item tem campos para os parâmetros de host necessários (endereço do host, porta, nome do proxy/sem proxy) e detalhes específicos do item (como comunidade SNMPv2 ou credenciais de segurança SNMPv3). Estes campos são sensíveis ao contexto:<br>
+
+   Os valores são pré-preenchidos quando possível, ou seja, para itens que exigem um agente, obtendo as informações da interface do agente selecionado do host<br>
+   Os valores devem ser preenchidos manualmente para itens de modelo<br>
+   Os valores de macro de texto simples são resolvidos<br>
+   Os campos em que o valor (ou parte do valor) é um segredo ou macro do Vault estão vazios e devem ser inseridos manualmente. Se algum parâmetro de item contiver um valor de macro secreto, a seguinte mensagem de aviso será exibida: "O item contém macros definidas pelo usuário com valores secretos. Os valores dessas macros devem ser inseridos manualmente."<br>
+   Os campos são desabilitados quando não são necessários no contexto do tipo de item (por exemplo, o campo de endereço do host e o campo proxy são desabilitados para itens calculados)<br>
+   Para testar o item, clique em Obter valor. Se o valor for recuperado com sucesso, ele preencherá o campo Valor, movendo o valor atual (se houver) para o campo Valor anterior enquanto também calcula o valor anterior. campo de tempo, ou seja, a diferença de tempo entre os dois valores (cliques) e tentar detectar uma sequência EOL e mudar para CRLF se detectar "\n\r" no valor recuperado.<br>
+
+   Se a configuração estiver incorreta, uma mensagem de erro será exibida descrevendo a possível causa.<br>
+
+   Um valor recuperado com sucesso do host também pode ser usado para testar as etapas de pré-processamento.<br>
+
+   **Obs.:** Na documentação possui imagens, então não deixe de acessar o link e ler a documentação.<br>
+
+## **Unsupported items**
+   Um item pode ficar sem suporte se seu valor não puder ser recuperado por algum motivo. Esses itens ainda são verificados novamente em seu intervalo de atualização padrão.<br>
+   Itens não suportados são relatados como tendo um estado NÃO SUPORTADO.<br>
