@@ -1,0 +1,35 @@
+## ** Item units**<br>
+   **Link:** https://www.zabbix.com/documentation/6.2/en/manual/config/items/item?hl=Units%2CZabbix<br>
+
+   Se um símbolo de unidade for definido, o Zabbix adicionará pós-processamento ao valor recebido e o exibirá com o prefixo de unidade definido.<br>
+
+   Por padrão, se o valor bruto exceder 1.000, ele será dividido por 1.000 e exibido de acordo. Por exemplo, se você definir bps e receber um valor de 881764, ele será exibido como 881,76 Kbps.<br>
+
+   O padrão de memória JEDEC é usado para processar unidades B (byte), Bps (bytes por segundo), que são divididas por 1024. Assim, se as unidades forem definidas como B ou Bps, o Zabbix exibirá:<br>
+
+   1 como 1B/1Bps<br>
+
+   1024 como 1KB/1KBps<br>
+
+   1536 como 1,5 KB/1,5 KBps<br>
+
+   O processamento especial é usado se as seguintes unidades relacionadas ao tempo forem usadas:<br>
+
+   Unixtime - traduzido para "aaaa.mm.dd hh:mm:ss". Para traduzir corretamente, o valor recebido deve ser um tipo de informação Numérica (sem sinal).<br>
+
+   Uptime - traduzido para "hh:mm:ss" ou "N dias, hh:mm:ss"<br>
+
+   Por exemplo, se você receber o valor como 881764 (segundos), ele será exibido como "10 dias, 04:56:04"<br>
+
+   s - traduzido para "aaaa mmm ddd hhh mmm sss ms"; parâmetro é tratado como número de segundos.<br>
+
+   Por exemplo, se você receber o valor como 881764 (segundos), ele será exibido como "10d 4h 56m"<br>
+
+   Apenas 3 unidades principais superiores são mostradas, como "1m 15d 5h" ou "2h 4m 46s". Se não houver dias para exibir, apenas dois níveis são exibidos - "1m 5h" (não são exibidos minutos, segundos ou milissegundos). Será traduzido para "< 1 ms" se o valor for menor que 0,001.<br>
+
+   bserve que, se uma unidade tiver o prefixo !, nenhum prefixo/processamento de unidade será aplicado aos valores do item. Consulte conversão de unidades.<br>
+
+## **Value map**
+   **Link:** https://www.zabbix.com/documentation/6.2/en/manual/api/reference/valuemap/object#value-map
+
+   Lei a documentação para ver as tabelas e enteder mais sobre o assunto abordado.<br>
