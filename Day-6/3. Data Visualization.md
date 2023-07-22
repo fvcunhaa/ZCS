@@ -1,0 +1,42 @@
+# **Data Visualization**<br>
+
+## **Custom graphs**<br>
+   *Link:* https://www.zabbix.com/documentation/6.0/en/manual/config/visualization/graphs/custom?hl=Custom%2Cgraphs<br>
+
+   Personalizado gráficos, como o nome sugere, oferece personalizadas capacidades de izao.<br>
+   Embora simplesgráficossão bons para visualizar dados de um único item, eles não oferecem recursos de configuração.<br>
+   Assim, se você deseja alterar o estilo do gráfico ou a forma como as linhas são exibidas ou comparar vários itens, por exemplo, tráfego de entrada e saída em um único gráfico, você precisa de umpersonalizadasgráfico.<br>
+   Personalizado gráficos são configurados manualmente.<br>
+   Eles podem ser criados para um host ou vários hosts ou para um único modelo.
+
+## **Network maps**<br>
+   *Link:* https://www.zabbix.com/documentation/6.0/en/manual/config/visualization/maps?hl=Network%2Cmaps%2Cnetwork<br>
+
+   Se você tem umredepara cuidar, você pode querer ter uma visão geral de sua infraestrutura em algum lugar. Para isso, você pode criarmapasno Zabbix - deredes e de qualquer coisa que você gosta.Todos os usuários podem criarrede mapas. omapaspode ser público (disponível para todos os usuários) ou privado (disponível para usuários selecionados).<br>
+   *Link Configurar Maps:* https://www.zabbix.com/documentation/6.0/en/manual/config/visualization/maps/map<br>
+
+## **Dashboards**<br>
+   *Link:* https://www.zabbix.com/documentation/6.0/en/manual/config/visualization/dashboard?hl=Dashboards<br>
+
+   Painéis e seus widgets fornecem uma plataforma de visualização forte com ferramentas como gráficos modernos, mapas, apresentações de slides e muito mais.
+
+## **Dashboard widgets**<br>
+   *Link:* https://www.zabbix.com/documentation/6.0/en/manual/web_interface/frontend_sections/monitoring/dashboard/widgets?hl=Dashboard%2Cdashboard%2Cwidget<br>
+
+   Esta seção fornece os detalhes dos parâmetros comuns para widgets de painel.<br>
+
+   **Parâmetros comuns** 
+     Os seguintes parâmetros são comuns para cada widget:<br>
+      
+   - Refresh interval: Configure o intervalo de atualização padrão. Os intervalos de atualização padrão para widgets variam de Sem atualização a 15 minutos, dependendo do tipo de widget. Por exemplo: Sem atualização para widget de URL, 1 minuto para widget de log de ações, 15 minutos para widget de relógio.<br>
+
+   - Show header: Marque a caixa de seleção para mostrar o cabeçalho permanentemente.<br>
+     Quando desmarcado, o cabeçalho fica oculto para economizar espaço e só desliza para cima e fica visível novamente quando o mouse é posicionado sobre o widget, tanto nos modos de visualização quanto de edição. Também é semi-visível ao arrastar um widget para um novo local.<br>
+
+   Os intervalos de atualização de um widget podem ser definidos como um valor padrão para todos os usuários correspondentes e também cada usuário pode definir seu próprio valor de intervalo de atualização:<br>
+
+   - Para definir um valor padrão para todos os usuários correspondentes, alterne para o modo de edição (clique no botão Editar painel, localize o widget correto, clique no botão Editar abrindo o formulário de edição de um widget) e escolha o intervalo de atualização necessário na lista suspensa.<br>
+
+   - É possível definir um intervalo de atualização exclusivo para cada usuário separadamente no modo de visualização clicando no botão de um determinado widget.<br>
+
+   O intervalo de atualização exclusivo definido por um usuário tem prioridade sobre a configuração do widget e, uma vez definido, é sempre preservado quando a configuração do widget é modificada<br>
