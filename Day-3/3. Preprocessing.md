@@ -1,0 +1,37 @@
+# **Interface do Zabbix:** Pré-processamento<br>
+
+**Link Documentação:** https://www.zabbix.com/documentation/6.0/en/manual/config/items/preprocessing<br>
+
+O pré-processamento permite definir regras de transformação para os valores recebidos nos itens. Uma ou várias transformações são possíveis antes de salvar a informação no banco de dados. Transformações são executadas na ordem em que são definidas. O pré-processamento é feito pelo Zabbix Server ou Proxy (se os itens são monitorados pelo Proxy).<br>
+
+**Atenção:** Um item se tornará não suportado se qualquer uma das etapas de pré-processamento falhar, a menos que tenha sido especificado um tratamento de erro customizado usando a opção Personalizado em caso de falha para transformações suportadas. Para itens de log, os metadados de log (sem valor) sempre atualizarão o estado do item não suportado, tornando-o novamente suportado, mesmo que o erro inicial tenha ocorrido após o recebimento do valor do log a partir do Agent.<br>
+
+# **Preprocessing:**<br>
+
+**Regular expression:** Possível filtrar o valor com expressão regular.<br>
+**Replace:** Serve para excluir ou substituir a string (metrica).<br>
+**Trim:** Remove os caracteres especificados do inicio e fim do valor.<br>
+**Right trim:** Revemo os caracteres especificados a direita do valor.<br>
+**Left trim:** Remove os caracteres especificados a esquerda do valor.<br>
+**XML XPath:** Serve para pegar um dado estruturado em XML e tratar o mesmo.<br>
+**JSON Path:** Serve para pegar um dado estruturado em JSON e tratar o mesmo.<br>
+**CSV to JSON:** Converte CSV em JSON.<br>
+**XML to JSON:** Converte XML em JSON.<br>
+**Custom multiplier:** Possível fazer a multiplicação do valor para converter valores KB,MBps e etc.<br>
+**Simple change:** Serve para calcular a diferença entre o valor atual e o anterior.<br>
+**Change per second:** Serve para calcular o valor que chega por segundo (Exemplo se tiver um valor total, mas deseja saber por segundo).<br>
+**Boolean to decimal:** Converta o valor do formato booleano para decimal. A representação textual é traduzida em 0 ou 1. Assim, 'TRUE' é armazenado como 1 e 'FALSE' é armazenado como 0. Todos os valores são correspondidos de maneira que não diferencia maiúsculas de minúsculas. Os valores atualmente reconhecidos são, para: TRUE - true, t, yes, y, on, up, running, enabled, available, ok, master. FALSE - false, f, no, n, off, down, unused, disabled, unavailable, err, slave. Além disso, qualquer valor numérico diferente de zero é considerado TRUE e zero é considerado FALSE.<br>
+**Octal to decimal:** Converta o valor do formato octal para decimal.<br>
+**Hexadecimal to decimal:** Converta o valor do formato hexadecimal para decimal.<br>
+**JavaScript:** Insira o código JavaScript no bloco que aparece ao clicar no campo de parâmetro.<br>
+**In range:** Defina um intervalo no qual um valor deve estar especificando valores mínimos/máximos.<br>
+**Matches regular expression:** Especifique uma expressão regular que um valor deve corresponder.<br>
+**Does not match regular expression:** Especifique uma expressão regular que um valor não deve corresponder.<br>
+**Check for error in JSON:** Verifique se há uma mensagem de erro no nível do aplicativo localizada em JSONpath.<br>
+**Check for error in XML:** Verifique se há uma mensagem de erro no nível do aplicativo localizada em XMLpath.<br>
+**Check for error using a regular expression:** Verifique se há uma mensagem de erro no nível do aplicativo localizada em Regular expression.<br>
+**Check for not supported value:** Verifique se houve um erro na recuperação do valor do item.<br>
+**Discard unchanged:** Descarte um valor se ele não foi alterado. Se um valor for descartado, ele não é salvo no banco de dados e o servidor Zabbix não tem conhecimento de que esse valor foi recebido.<br>
+**Discard unchanged with heartbeat:** Descarte um valor se ele não mudou dentro do período de tempo definido (em segundos). Valores inteiros positivos são suportados para especificar os segundos.<br>
+**Prometheus pattern:** Use a consulta a seguir para extrair os dados necessários das métricas do Prometheus.<br>
+**Prometheus to JSON:** Converta as métricas necessárias do Prometheus em JSON.<br>
