@@ -1,0 +1,61 @@
+# **IT Services**<br>
+  **Link:** https://www.zabbix.com/documentation/6.0/en/manual/it_services<br>
+
+  **Visão geral:** O monitoramento de serviço é um monitoramento de nível de negócios que pode ser usado para obter uma visão geral de toda a árvore de serviços de infraestrutura de TI, identificar pontos fracos da infraestrutura, calcular SLA de vários serviços de TI e verificar outras informações em um nível superior. O monitoramento de serviço se concentra na disponibilidade geral de um serviço em vez de detalhes de baixo nível, como falta de espaço em disco, alta carga do processador, etc. serviço não está funcionando como esperado.<br>
+
+  O monitoramento de serviço permite criar uma representação hierárquica dos dados monitorados.<br>
+
+  Uma estrutura de serviço muito simples pode se parecer com:<br>
+                                                             Service<br>
+                                                            |<br>
+                                                            |-Workstations<br>
+                                                            | |<br>
+                                                            | |-Workstation1<br>
+                                                            | |<br>
+                                                            | |-Workstation2<br>
+                                                            |<br>
+                                                            |-Servers<br>
+
+
+   Cada nó da estrutura possui status de atributo. O status é calculado e propagado para níveis superiores de acordo com o algoritmo selecionado. O status de nós individuais é afetado pelo status dos problemas mapeados. O mapeamento do problema é realizado com a marcação.<br>
+   
+   O Zabbix pode enviar notificações ou executar automaticamente um script no servidor Zabbix caso seja detectada uma alteração no status do serviço. É possível definir regras flexíveis se um serviço pai deve entrar em um 'estado de problema' com base nos status dos serviços filho. Os dados de problemas de serviços podem ser usados ​​para calcular o SLA e enviar relatórios de SLA com base no conjunto flexível de condições.<br>
+
+## **SLA and service actions**<br>
+   **Link SLA:** https://www.zabbix.com/documentation/6.0/en/manual/it_services/sla<br>
+   **Link Service Actions** https://www.zabbix.com/documentation/6.0/en/manual/it_services/service_actions<br>
+   **Link Service Tags:** https://www.zabbix.com/documentation/6.0/en/manual/it_services/service_tree<br>
+
+## **SLA**<br>
+   
+   Visão Geral: Depois que os serviços são criados, você pode começar a monitorar se seu desempenho está de acordo com o acordo de nível de serviço (SLA). A seção de menu Serviços->SLA permite configurar SLAs para vários serviços. Um SLA no Zabbix define o objetivo de nível de serviço (SLO), cronograma de tempo de atividade esperado e tempos de inatividade planejados.<br>
+
+   SLAs e serviços são correspondidos por etiquetas de serviço. O mesmo SLA pode ser aplicado a vários serviços - o desempenho será medido para cada serviço correspondente separadamente. Um único serviço pode ter vários SLAs atribuídos - os dados para cada um dos SLAs serão exibidos separadamente.<br>
+
+   Nos relatórios de SLA, o Zabbix fornece dados do indicador de nível de serviço (SLI), que mede a disponibilidade real do serviço. Se um serviço atende às metas de SLA é determinado pela comparação de SLO (disponibilidade esperada em %) com SLI (disponibilidade real em %).<br>
+
+## **Service Actions**<br>
+   
+   Nesta seção você pode visualizar e configurar ações de serviço.<br>
+
+   As ações de serviço são úteis se você deseja que algumas operações ocorram como resultado da alteração do status do serviço (OK ⇿ PROBLEMA), por exemplo:<br>
+
+   - enviar mensagem<br>
+   - reinicie o servidor web<br>
+   - As ações de serviço são funcionalmente semelhantes a outros tipos de ação no Zabbix (por exemplo, ações de gatilho).<br>
+
+## **Service tags**<br>
+
+   As etiquetas de serviço são usadas para combinar serviços com ações de serviço e SLAs. Essas tags são especificadas na guia de configuração do serviço Tabs. Para mapeamento de SLAs, a lógica OR é usada: um serviço será mapeado para um SLA se tiver pelo menos uma tag correspondente. Nas ações de serviço, as regras de mapeamento são configuráveis ​​e podem usar a lógica AND, OR ou AND/OR.<br>
+
+## **Problem tags**<br>
+
+   As tags de problema são usadas para combinar problemas e serviços. Essas tags são especificadas na guia de configuração do serviço primário.<br>
+
+   Somente os serviços filho do nível de hierarquia mais baixo podem ter tags de problema definidas e estar diretamente correlacionadas a problemas. Se as tags de problema corresponderem, o status do serviço mudará para o mesmo status do problema. No caso de vários problemas, um serviço terá o status do mais grave. O status de um serviço pai é então calculado com base nos status dos serviços filho de acordo com as regras de cálculo de status.<br>
+
+   Se vários tags forem especificados, a lógica AND é usada: um problema deve ter todos os tags especificados na configuração do serviço para serem mapeados para o serviço.<br>
+
+
+  **Obs.:** Lembrando que todos os links das documentações, possui imagem e tabela para conferir. Nunca deixe de ler a documentação oficial.<br>
+  
