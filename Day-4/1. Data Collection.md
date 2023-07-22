@@ -1,0 +1,163 @@
+# **Data Collection**<br>
+
+## **Zabbix Sender**<br>
+   **Link:** https://www.zabbix.com/documentation/6.2/en/manpages/zabbix_sender?hl=Zabbix%2Csender#description<br>
+
+   zabbix_sender é um utilitário de linha de comando para enviar dados de monitoramento para o servidor ou proxy Zabbix. No servidor Zabbix deve ser criado um item do tipo Zabbix trapper com a chave correspondente. Observe que os valores de entrada só serão aceitos de hosts especificados no campo Hosts permitidos para este item.<br>
+
+   EXAMPLES: zabbix_sender -c /etc/zabbix/zabbix_agentd.conf -k mysql.queries -o 342.45 <br>
+             zabbix_sender -c /etc/zabbix/zabbix_agentd.conf -s "Monitored Host" -k mysql.queries -o 342.45<br>
+
+## **SSH Checks**<br>
+   **Link:** https://www.zabbix.com/documentation/6.2/en/manual/config/items/itemtypes/ssh_checks?hl=SSH%2Cchecks<br>
+
+   As verificações de SSH são executadas como monitoramento sem agente. O agente Zabbix não é necessário para verificações SSH. Para realizar verificações de SSH, o servidor Zabbix deve ser configurado inicialmente com suporte a SSH2 (libssh2 ou libssh).<br>
+
+   **Configuration**
+    *Autenticação de senha:* As verificações SSH fornecem dois métodos de autenticação, um par usuário/senha e baseado em arquivo de chave. Se você não pretende usar chaves, nenhuma configuração adicional é necessária, além de vincular libssh2/libssh ao Zabbix, se você estiver compilando a partir do código-fonte.<br>
+
+   *Autenticação de arquivo de chave:* Para usar a autenticação baseada em chave para itens SSH, são necessárias algumas alterações na configuração do servidor. <br>
+   
+   Obs.: Na documentação tem o passo a passo de como fazer a configuração, então acesse o link e configura tudo sobre o SSH Checks.<br>
+
+## **Telnet Checks**<br>
+   **Link:** https://www.zabbix.com/documentation/6.2/en/manual/config/items/itemtypes/telnet_checks?hl=Telnet%2Cchecks<br>
+
+   As verificações de Telnet são executadas como monitoramento sem agente. O agente Zabbix não é necessário para verificações de Telnet.
+
+   **Configurable fields**<br>
+   Os comandos reais a serem executados devem ser colocados no campo Script executado na configuração do item.<br>
+   Vários comandos podem ser executados um após o outro, colocando-os em uma nova linha. Nesse caso, o valor retornado também será formatado como multilinha.<br>
+
+## **SNMP Interfaces**<br>
+   **Link:** https://www.zabbix.com/documentation/6.2/en/manual/config/items/itemtypes/snmp?hl=SNMP<br>
+
+   Adicione uma interface SNMP para o host:<br>
+
+   - Digite o endereço IP/nome DNS e o número da porta<br>
+   - Selecione a versão SNMP na lista suspensa<br>
+   - Adicione credenciais de interface dependendo da versão SNMP selecionada:<br>
+   - SNMPv1, v2 requerem apenas a comunidade (geralmente 'pública' ou você determina nas configurações do equipamento)<br>
+   - O SNMPv3 requer opções mais específicas (veja abaixo)<br>
+   - Deixe a caixa de seleção Usar solicitações em massa marcada para permitir o processamento em massa de solicitações SNMP <br>
+
+    Na documentação tem uma tabela do SNMP V3, então veja para ver todos os parametros para utilização.<br>
+
+## **SNMP OIDs and MIBs**<br>
+   Para saber a OID de terminado item que desejamos coletar, vamos usar um browser MIB para fazer o levantamento das OIDs.<br>
+
+  *Exemplo:* OID:.1.3.6.1.4.1.32624.2.1.2.5.1.6<br>
+             Name:ChannelStatsIncoming<br>
+             Descrição: Números de chamadas entrantes por canal físico<br>
+
+## **SNMP OIDs and MIBs**<br>
+   **Link:** https://www.comparitech.com/net-admin/snmpwalk-examples-windows-linux/<br>
+
+   Segue nesse link exemplo de um SNMPWALK.<br>
+
+   Exemplo: <br>
+   - % snmpwalk-v 1 localhost public system # system.sysDescr.o = “SunOS name sun4c” <br>
+   - system.sysObjectID.o = OID: enterprises.ucdavis.ucdSnmpAgent.sunos4 <br>
+   - system.sys.UpTime.o = Timeticks (595637548) 68 days, 22:32:55 <br>
+   - system.sysContact.o = “sys_admin@stc.org>”<br>
+   - system.sysName.o = “Ridyadh_o8_WS” <br>
+   - system.sysLocation.o = “Ridyadh, KSA” <br>
+   - system.sysServices.o = 72<br>
+
+## **SNMP troubleshooting**<br>
+    
+   Para realizar o troubleshooting do SNMP no zabbix, devemos entender sobre o protocolo e somo ele funciona. Verificar se a forma que estamos trazendo a informação está correta, SNMP WALK, BULK, GET.... Então devemos identificar o erro que o zabbix até nos trazendo e tratar com o nosso conhecimento do protocolo e do zabbix.<br>
+
+## **SNMP Traps**<br>
+   **Link:** https://www.zabbix.com/documentation/6.2/en/manual/config/items/itemtypes/snmptrap?hl=SNMP%2Ctra<br>
+
+   Receber traps SNMP é o oposto de consultar dispositivos habilitados para SNMP. Nesse caso, as informações são enviadas de um dispositivo habilitado para SNMP e são coletadas ou "presas" pelo Zabbix. Normalmente, os traps são enviados após alguma alteração de condição e o agente se conecta ao servidor na porta 162 (em oposição à porta 161 no lado do agente que é usada para consultas). O uso de traps pode detectar alguns problemas curtos que ocorrem durante o intervalo de consulta e podem ser perdidos pelos dados da consulta.<br>
+   O recebimento de traps SNMP no Zabbix foi projetado para funcionar com o snmptrapd e um dos mecanismos para passar as traps para o Zabbix - um script Bash ou Perl ou SNMPTT.<br>
+
+   Na documentação tem como fazer a configuração e o monitoramento do mesmo. Então, não deixe de abrir o link e ler toda as informações.<br>
+
+## **IPMI Monitoring**<br>
+   **Link:** https://www.zabbix.com/documentation/6.2/en/manual/config/items/itemtypes/ipmi?hl=IPMI%2Cipmi<br>
+
+   Você pode monitorar a integridade e a disponibilidade de dispositivos da Interface de Gerenciamento de Plataforma Inteligente (IPMI) no Zabbix. Para realizar verificações de IPMI, o servidor Zabbix deve ser configurado inicialmente com suporte a IPMI.<br>
+
+   O IPMI é uma interface padronizada para gerenciamento remoto "sem luzes" ou "fora de banda" de sistemas de computador. Permite monitorar o status do hardware diretamente dos chamados cartões de gerenciamento "fora de banda", independentemente do sistema operacional ou se a máquina está ligada.<br>
+
+   O monitoramento Zabbix IPMI funciona apenas para dispositivos com suporte a IPMI (HP iLO, DELL DRAC, IBM RSA, Sun SSP, etc).<br>
+
+   Desde o Zabbix 3.4, um novo processo de gerenciamento de IPMI foi adicionado para agendar verificações de IPMI por pollers de IPMI. Agora, um host é sempre consultado por apenas um poller IPMI de cada vez, reduzindo o número de conexões abertas aos controladores BMC. Com essas alterações, é seguro aumentar o número de pollers IPMI sem se preocupar com a sobrecarga do controlador BMC. O processo do gerenciador de IPMI é iniciado automaticamente quando pelo menos um poller de IPMI é iniciado.<br>
+   
+   Consulte também problemas conhecidos para verificações de IPMI. Na documentação tem informações de configuração, as checagem que suporta entre outras informações.<br>
+
+## **Calculated Checks**<br>
+   **Link:** https://www.zabbix.com/documentation/6.2/en/manual/config/items/itemtypes/calculated?hl=Calculated%2Ccalculated<br>
+   Com itens calculados é possível criar cálculos com base nos valores de outros itens.<br>
+
+   Os cálculos podem usar ambos:<br>
+
+   - valores únicos de itens individuais<br>
+   - filtros complexos para selecionar vários itens para agregações (consulte os cálculos agregados para obter detalhes)<br>
+   - Assim, os itens calculados são uma forma de criar fontes de dados virtuais. Todos os cálculos são feitos apenas pelo servidor     zabbix. Os valores são calculados periodicamente com base na expressão aritmética utilizada.<br>
+
+   Os dados resultantes são armazenados no banco de dados Zabbix como para qualquer outro item; os valores de histórico e de tendência são armazenados e os gráficos podem ser gerados.<br>
+
+   Itens calculados compartilham sua sintaxe com expressões de gatilho. A comparação com strings é permitida em itens calculados. Itens calculados podem ser referenciados por macros ou outras entidades como qualquer outro tipo de item.<br>
+
+   Para usar itens calculados, escolha o tipo de item Calculado.<br>
+
+   Exemplo: 100*last(//net.if.in[eth0,bytes])/(last(//net.if.in[eth0,bytes])+last(//net.if.out[eth0,bytes]))<br>
+
+   Lembrando de ler a documentação, pois possui muito mais informações que presente nesse arquivo.<br>
+
+## **Log file Overwiew/Monitoring/Details**<br>
+   **Link:** https://www.zabbix.com/documentation/6.2/en/manual/config/items/itemtypes/log_items?hl=Log%2Cfile%2Clog <br>
+
+   O Zabbix pode ser usado para monitoramento centralizado e análise de arquivos de log com/sem suporte para rotação de log. As notificações podem ser usadas para avisar os usuários quando um arquivo de log contém certas strings ou padrões de string.<br>
+
+   Para monitorar um arquivo de log, você deve ter:<br>
+
+   - Agente Zabbix rodando no host<br>
+   - configuração de item de monitoramento de log<br>
+
+   Na documentação possui como fazer a configuração, os parametros e todas as informações pertencentes ao log file.<br>   
+
+
+## **HTTP Agent**<br>
+   **Link:** https://www.zabbix.com/documentation/6.2/en/manual/config/items/itemtypes/http?hl=HTTP<br>
+
+   Este tipo de item permite a pesquisa de dados usando o protocolo HTTP/HTTPS. Trapping também é possível usando o Zabbix Sender ou o Zabbix Sender Protocol.A verificação de itens HTTP é executada pelo servidor Zabbix. No entanto, quando os hosts são monitorados por um proxy Zabbix, as verificações de itens HTTP são executadas pelo proxy.<br>
+
+   As verificações de itens HTTP não requerem nenhum agente em execução em um host sendo monitorado.<br>
+
+   O agente HTTP suporta HTTP e HTTPS. O Zabbix opcionalmente seguirá os redirecionamentos (veja a opção Seguir redirecionamentos abaixo). O número máximo de redirecionamentos é codificado em 10 (usando a opção cURL CURLOPT_MAXREDIRS).<br>
+
+   Consulte também problemas conhecidos ao usar o protocolo HTTPS.<br>
+   **Link problemas:** https://www.zabbix.com/documentation/6.2/en/manual/installation/known_issues#https-checks<br>
+
+## **HTTP Authentication**
+   Tipo de Autenticação:<br> 
+   - Nenhum - nenhuma autenticação usada.<br>
+   - Básico - a autenticação básica é usada.<br>
+   - NTLM - A autenticação NTLM (Windows NT LAN Manager) é usada. http://en.wikipedia.org/wiki/NTLM<br>
+   - Kerberos - a autenticação Kerberos é usada. Veja também: Configurando Kerberos com Zabbix.  https://www.zabbix.com/documentation/6.2/en/manual/appendix/items/kerberos <br>
+   - Digest - A autenticação Digest é usada.<br>
+   - A seleção de um método de autenticação fornecerá dois campos adicionais para inserir um nome de usuário e senha, onde macros de usuário e macros de descoberta de baixo nível são suportadas.<br>
+   - Isso define a opção CURLOPT_HTTPAUTH cURL. https://curl.haxx.se/libcurl/c/CURLOPT_HTTPAUTH.html <br>
+
+## **Web scenarios**<br>
+   **Link:** https://www.zabbix.com/documentation/6.2/en/manual/web_interface/frontend_sections/configuration/hosts/web?hl=Web%2Cscenario%2Cweb<br>
+   
+   A lista de cenários da Web para um host pode ser acessada em Configuração → Hosts clicando em Web para o respectivo host.Uma lista de cenários da Web existentes é exibida.<br>
+
+   Restante das informações na documentação oficial do zabbix no link aicma.<br>
+
+## **Web scenarios Steps**<br>
+   **Link:** https://www.zabbix.com/documentation/6.2/en/manual/web_monitoring?hl=Web%2Csteps%2Cscenarios%2Cweb<br>
+   O número de tentativas para executar as etapas do cenário da web. Em caso de problemas de rede (timeout, sem conectividade, etc) o Zabbix pode repetir a execução de um passo várias vezes. O conjunto de figuras afetará igualmente cada etapa do cenário. Até 10 tentativas podem ser especificadas, o valor padrão é 1.<br>
+
+   Nota: O Zabbix não irá repetir um passo devido a um código de resposta errado ou a incompatibilidade de uma string necessária.<br>
+   A guia Etapas permite configurar as etapas do cenário da Web. Para adicionar uma etapa de cenário da Web, clique em Adicionar no bloco Etapas.<br>
+   Na documentação tem o passo a passo para a configuração da mesma.<br>
+
+  
+    
