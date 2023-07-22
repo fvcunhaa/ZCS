@@ -1,0 +1,62 @@
+# **Actions**<br>
+
+   **Functionality**<br>
+   **Link:** https://www.zabbix.com/documentation/6.0/en/manual/it_services/service_actions?hl=actions%2Cconfiguring<br>
+   Nesta seção você pode visualizar e configurar ações de serviço. As ações de serviço são úteis se você deseja que algumas operações ocorram como resultado da alteração do status do serviço (OK ⇿ PROBLEMA).<br>
+
+   As ações de serviço são funcionalmente semelhantes a outros tipos de ação no Zabbix (por exemplo, ações de gatilho).<br>
+
+  **Conditions**<br>
+   As seguintes condições podem ser usadas em ações de serviço: Será dado um exemplo, restante na documentação em sua tabela.<br>
+
+   *Condition type:* Service <br>
+   *Supported operators:* equals does not equal <br>
+   *Description:* Especifique um serviço ou um serviço a ser excluído. equals - o evento pertence a este serviço;<br>
+                Não é igual - o evento não pertence a este serviço;<br>
+                Especificar um serviço pai seleciona implicitamente todos os serviços filho. Para especificar apenas o serviço pai, todos os serviços aninhados devem ser configurados adicionalmente com o operador não é igual.<br>
+   
+
+
+  **Operations and steps**<br>
+    Para configurar uma ação, faça o seguinte:<br>
+      
+  -  Vá para Configuração -> Ações e selecione o tipo de ação necessário no submenu (você pode alternar para outro tipo mais tarde, usando o menu suspenso de título)<br>
+  - Clique em Criar ação<br>
+  - Nomeie a ação<br>
+  - Escolha as condições em que as operações são realizadas<br>
+  - Escolha as operações a realizar<br>
+  - Observe que as ações de serviço podem ser configuradas na seção de ação de serviço.<br>
+
+  **Recovery operations**<br>
+  - As operações de ação (se houver) são exibidas, com estes detalhes:<br>
+  - Detalhes - tipo de operação e seu destinatário/alvo.<br>
+  - A lista de operações também exibe o tipo de mídia (e-mail, SMS ou script) usado, bem como o nome e sobrenome (entre parênteses após o nome de usuário) de um destinatário da notificação.<br>
+  - Ação - os links para editar e remover uma operação são exibidos.<br>
+
+  **Update operations**<br>
+  - As operações de ação (se houver) são exibidas, com estes detalhes:<br>
+  - Detalhes - tipo de operação e seu destinatário/alvo.<br>
+  - A lista de operações também exibe o tipo de mídia (e-mail, SMS ou script) usado, bem como o nome e sobrenome (entre parênteses após o nome de usuário) de um destinatário da notificação.<br>
+  - Ação - os links para editar e remover uma operação são exibidos.<br>
+
+  **Escalations**<br>
+  **Link:** https://www.zabbix.com/documentation/6.0/en/manual/config/notifications/action/escalations?hl=Escalations%2Cescalations<br>
+  
+   Com os escalonamentos, você pode criar cenários personalizados para enviar notificações ou executar comandos remotos.<br>
+
+   Em termos práticos significa que:<br>
+                                    Os usuários podem ser informados sobre novos problemas imediatamente<br>
+                                    As notificações podem ser repetidas até que o problema seja resolvido<br>
+                                    O envio de uma notificação pode ser atrasado<br>
+                                    As notificações podem ser escaladas para outro grupo de usuários "superior"<br>
+                                    Os comandos remotos podem ser executados imediatamente ou quando um problema não for resolvido por um longo período<br>
+    
+  As ações são escaladas com base na etapa de escalação. Cada etapa tem uma duração no tempo.<br>
+
+  Você pode definir a duração padrão e uma duração personalizada de uma etapa individual. A duração mínima de uma etapa de escalonamento é de 60 segundos.<br>
+
+  Você pode iniciar ações, como enviar notificações ou executar comandos, a partir de qualquer etapa. O primeiro passo é para ações imediatas. Se você quiser atrasar uma ação, poderá atribuí-la a uma etapa posterior. Para cada etapa, várias ações podem ser definidas.<br>
+
+  O número de etapas de escalonamento não é limitado.<br>
+
+  Os escalonamentos são definidos ao configurar uma operação. Os escalonamentos são suportados apenas para operações com problemas, não para recuperação.<br>
