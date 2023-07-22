@@ -1,0 +1,58 @@
+# **Notification**<br>
+
+## **Media Types**<br>
+   **Link:** https://www.zabbix.com/documentation/6.0/en/manual/web_interface/frontend_sections/administration/mediatypes<br>
+
+   Na seção Administração → Tipos de mídia, os usuários podem configurar e manter informações sobre o tipo de mídia. As informações de tipo de mídia contêm instruções gerais para usar uma mídia como canal de entrega para notificações. Detalhes específicos, como os endereços de e-mail individuais para os quais enviar uma notificação, são mantidos com usuários individuais.<br>
+
+   Uma lista de tipos de mídia existentes com seus detalhes é exibida.<br>
+
+   Displayed data:<br>
+   **Name** --> Nome do tipo de mídia. Clicar no nome abre o formulário de configuração do tipo de mídia.<br>
+   https://www.zabbix.com/documentation/6.0/en/manual/config/notifications/media/email#configuration<br>
+
+   **Type** --> O tipo de mídia (e-mail, SMS, etc) é exibido.<br>
+   
+   **Status** --> O status do tipo de mídia é exibido - Ativado ou Desativado. Ao clicar no status, você pode alterá-lo.<br>
+
+   **Used in actions** --> Todas as ações em que o tipo de mídia é usado diretamente (selecionado na lista suspensa Enviar apenas para) são exibidas. Clicar no nome da ação abre o formulário de configuração da ação.<br>
+
+   **Details** --> Informações detalhadas do tipo de mídia são exibidas.<br>
+
+   **Actions** --> A seguinte ação está disponível: Teste - clique para abrir um formulário de teste onde você pode inserir parâmetros de tipo de mídia (por exemplo, um endereço de destinatário com assunto e corpo de teste) e enviar uma mensagem de teste para verificar se o tipo de mídia configurado funciona. Veja também: Teste de tipo de mídia. <br>
+
+   Para configurar um novo tipo de mídia, clique no botão Criar tipo de mídia no canto superior direito. Para importar um tipo de mídia de XML, clique no botão Importar no canto superior direito.<br>
+
+   **Opções de edição em massa:** Os botões abaixo da lista oferecem algumas opções de edição em massa<br>
+   - Enable - altere o status do tipo de mídia para Ativado<br>
+   - Disabled - altere o status do tipo de mídia para Desativado<br>
+   - Export - exporte os tipos de mídia para um arquivo YAML, XML ou JSON<br>
+   - Delete - exclua os tipos de mídia<br>
+
+   Para usar essas opções, marque as caixas de seleção antes dos respectivos tipos de mídia e clique no botão desejado.<br>
+
+## **Message templates**<br>
+   **Link:** https://www.zabbix.com/documentation/6.0/en/manual/quickstart/notification?hl=message%2Ctemplate%2CMessage<br>
+
+   **E-mail settings**
+   Inicialmente existem vários métodos de entrega de notificação predefinidos no Zabbix. O e-mail é um deles. Para definir as configurações de e-mail, vá para Administração → Tipos de mídia e clique em E-mail na lista de tipos de mídia predefinidos.<br>
+
+   Isso nos apresentará o formulário de definição de configurações de e-mail.<br>
+
+   Todos os campos de entrada obrigatórios estão marcados com um asterisco vermelho. Na guia Tipo de mídia, defina os valores de servidor SMTP, SMTP helo e e-mail SMTP para o apropriado para seu ambiente.<br>
+
+   Em seguida, é necessário definir o conteúdo da mensagem do problema. O conteúdo é definido por meio de um modelo de mensagem, configurado na guia Modelos de mensagem. <br>
+
+   Clique em Adicionar para criar um modelo de mensagem e selecione Problema como o tipo de mensagem.<br>
+
+   Clique em Adicionar quando estiver pronto e salve o formulário. Agora você configurou 'E-mail' como um tipo de mídia funcional. O tipo de mídia também deve ser vinculado aos usuários definindo endereços de entrega específicos (como fizemos ao configurar um novo usuário), caso contrário não será usado.<br>
+
+   **Obs.:** Sempre é bom lembrar que entre os paragrafos muitas vezes possui imagem então é de suma importancia ler a documentação pelo link.<br>
+
+## **User media setup**<br>
+   **Link:** https://www.zabbix.com/documentation/6.0/en/manual/config/users_and_usergroups/user?hl=user%2CUser%2Cmedia%2CMedia<br>
+ 
+   A guia Mídia contém uma lista de todas as mídias definidas para o usuário. A mídia é usada para enviar notificações. Clique em Adicionar para atribuir mídia ao usuário<br>
+
+   Consulte a seção Tipos de mídia para obter detalhes sobre como configurar a mídia do usuário.<br>
+   *Tipos de mídia:* https://www.zabbix.com/documentation/6.0/en/manual/config/notifications/media#user-media<br>
