@@ -1,0 +1,43 @@
+# **Administration**<br>
+
+## **General settings**<br>
+   *Link:* https://www.zabbix.com/documentation/6.0/en/manual/web_interface/frontend_sections/administration/general<br>
+
+   A seção Administração → Geral contém várias subseções para definir padrões relacionados ao frontend e personalizar o Zabbix.<br>
+   A lista de subseções disponíveis aparece ao pressionar Geral na seção do menu Administração. Também é possível alternar entre subseções usando o menu suspenso de título no canto superior esquerdo.<br>
+
+   **1 GUI**<br>
+
+   Esta seção fornece personalização de vários padrões relacionados ao frontend.<br>
+
+## **Housekeeper Settings**<br>
+   *Link:* https://www.zabbix.com/documentation/6.0/en/manual/web_interface/frontend_sections/administration/general<br>
+   A Housekeeper é um processo periódico, executado pelo servidor Zabbix. O processo remove informações desatualizadas e informações excluídas pelo usuário.<br>
+
+   Nesta seção, as tarefas de manutenção podem ser habilitadas ou desabilitadas separadamente por tarefa para: eventos e alertas/serviços de TI/sessões do usuário/histórico/tendências. As configurações de manutenção de auditoria estão disponíveis em uma seção de menu separada.<br>
+
+   Se a limpeza estiver habilitada, é possível definir por quantos dias os registros de dados serão mantidos antes de serem removidos pela Housekeeper.<br>
+
+   A exclusão de um item/gatilho também excluirá os problemas gerados por esse item/gatilho.<br>
+
+   Além disso, um evento só será excluído pela Housekeeper se não estiver associado a um problema de alguma forma. Isso significa que, se um evento for um problema ou um evento de recuperação, ele não será excluído até que o registro do problema relacionado seja removido. A Housekeeper excluirá os problemas primeiro e os eventos depois, para evitar possíveis problemas com eventos obsoletos ou registros de problemas.<br>
+
+   Para histórico e tendências, uma opção adicional está disponível: Substituir período do histórico do item e Substituir período de tendência do item. Esta opção permite definir globalmente por quantos dias o histórico/tendências do item serão mantidos (1 hora a 25 anos; ou "0"), neste caso substituindo os valores definidos para itens individuais nos campos Período de armazenamento de histórico/Período de armazenamento de tendências em configuração de itens. Observe que o período de armazenamento não será substituído para itens que tenham a opção de configuração Não manter histórico e/ou Não manter tendências habilitadas.<br>
+
+   É possível anular o período de armazenamento de histórico/tendência mesmo se a manutenção interna estiver desabilitada. Assim, ao usar uma Housekeeper externa, o período de armazenamento do histórico pode ser definido usando o campo Período de armazenamento de dados do histórico.<br>
+
+## **Regular expressions globais**<br>
+   *Link:* https://www.zabbix.com/documentation/6.0/en/manual/regular_expressions<br>
+
+   Esta seção permite criar expressões regulares personalizadas que podem ser usadas em vários lugares no frontend. Consulte a seção Expressões regulares para obter detalhes.<br>
+
+   Existe um editor avançado para criar e testar expressões regulares complexas no frontend do Zabbix.<br>
+
+   Uma vez que uma expressão regular tenha sido criada desta forma, ela pode ser usada em vários lugares no frontend fazendo referência ao seu nome, prefixado com @, por exemplo, @mycustomregexp.<br>
+
+   Para criar uma expressão regular global:<br>
+                                           - Go to: Administration → General<br>
+                                           - Select Regular expressions from the dropdown<br>
+                                           - Click on New regular expression<br>
+   
+   A guia Expressões permite definir o nome da expressão regular e adicionar subexpressões.<br>
